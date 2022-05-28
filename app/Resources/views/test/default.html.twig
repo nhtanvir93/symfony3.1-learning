@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Show Project Name
+{% endblock %}
+
+{% block body %}
+    <p>{{ greetingMessage | quotation('$') }}</p>
+    <p>{{ projectName }}</p>
+    <p>{{ environmentMode }}</p>
+{% endblock %}

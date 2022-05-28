@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Edit New Role ({{ form.vars.value.id }}){% endblock %}
+
+{% block body %}
+    <h1 class="display-4">Edit New Role ({{ form.vars.value.id }})</h1>
+    <a class="btn btn-primary btn-sm mb-1" href="{{ path('role_list') }}">Back to Roles</a>
+
+    {% include 'components/flash.html.twig' with { 'flashMessages' : app.session.flashbag.all } %}
+
+    {% include 'role/form.html.twig' with { 'form' : form } only %}
+{% endblock %}

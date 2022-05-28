@@ -1,0 +1,42 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+  greeting.message: 'Hello'
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+  greetings:
+    class: AppBundle\Service\Greeting
+    autoconfigure: true
+    public: false
+    arguments: ['@logger', '%greeting.message%']
+    calls:
+      - method: setContainer
+        arguments:
+          - '@service_container'
+
+  AppBundle\Controller\TestController:
+    class: AppBundle\Controller\TestController
+    autowire: true
+    calls:
+      - method: setContainer
+        arguments:
+          - '@service_container'
+
+  app.twig_extension:
+    class: AppBundle\Twig\AppExtension
+    public: false
+    arguments: ['DEVELOPMENT']
+    tags:
+      - { name: twig.extension }
+
+  AppBundle\Controller\RoleController:
+    class: AppBundle\Controller\RoleController
+    arguments: ['@service_container', '@AppBundle\Entity\Role']
+
+  AppBundle\Entity\Role:
+    class: AppBundle\Entity\Role

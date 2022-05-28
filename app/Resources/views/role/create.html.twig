@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Add New Role {% endblock %}
+
+{% block body %}
+    <h1 class="display-4">Add New Role</h1>
+    <a class="btn btn-primary btn-sm mb-1" href="{{ path('role_list') }}">Back to Roles</a>
+
+    {% include 'role/form.html.twig' with { 'form' : form, 'action' : action } only %}
+{% endblock %}

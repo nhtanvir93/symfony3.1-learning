@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Show Role Details ({{ role.id }}){% endblock %}
+
+{% block body %}
+    <h1 class="display-4">Role Details ({{ role.id }})</h1>
+    <a class="btn btn-primary btn-sm mb-1" href="{{ path('role_list') }}">Back to Roles</a>
+
+    {% include 'components/flash.html.twig' with { 'flashMessages' : app.session.flashbag.all } %}
+
+    <ul class="list-group">
+        <li class="list-group-item"><b>ID :</b> {{ role.id }}</li>
+        <li class="list-group-item"><b>Title :</b>  {{ role.title }}</li>
+        <li class="list-group-item"><b>Description :</b> {{ role.description }}</li>
+        <li class="list-group-item"><b>Created At :</b> {{ role.createdAt | date('d/m/Y h:i A') }}</li>
+    </ul>
+{% endblock %}

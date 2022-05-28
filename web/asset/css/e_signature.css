@@ -1,0 +1,27 @@
+#e-signature-tab {
+    background-color: seashell;
+    margin-top: 20px;
+}
+
+#e-signature-tab:hover {
+    cursor: pointer;
+}
+
+.action-button-container {
+    width: 400px;
+}
+
+.action-buttons {
+    float: right;
+    margin-left: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    #e-signature-tab, .action-button-container {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+}
