@@ -8,10 +8,18 @@
 
     {% include 'components/flash.html.twig' with { 'flashMessages' : app.session.flashbag.all } %}
 
-    <ul class="list-group">
-        <li class="list-group-item"><b>ID :</b> {{ role.id }}</li>
-        <li class="list-group-item"><b>Title :</b>  {{ role.title }}</li>
-        <li class="list-group-item"><b>Description :</b> {{ role.description }}</li>
-        <li class="list-group-item"><b>Created At :</b> {{ role.createdAt | date('d/m/Y h:i A') }}</li>
-    </ul>
+    <table class="table table-hover table-striped">
+        <tr>
+            <td width="20%"><b>Title </b></td>
+            <td width="80%">{{ role.title }}</td>
+        </tr>
+        <tr>
+            <td width="20%"><b>Description </b></td>
+            <td width="80%">{{ role.description }}</td>
+        </tr>
+        <tr>
+            <td width="20%"><b>Created At </b></td>
+            <td width="80%">{{ role.createdAt | date('d/m/Y h:i A') }}</td>
+        </tr>
+    </table>
 {% endblock %}
