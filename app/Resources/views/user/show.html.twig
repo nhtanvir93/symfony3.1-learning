@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Show User Details ({{ user.id }}){% endblock %}
+
+{% block body %}
+    <h1 class="display-4">User Details ({{ user.id }})</h1>
+    <a class="btn btn-primary btn-sm mb-1" href="{{ path('user_list') }}">Back to Users</a>
+
+    {% include 'components/flash.html.twig' with { 'flashMessages' : app.session.flashbag.all } %}
+
+    <table class="table table-hover table-striped">
+        <tr>
+            <td width="20%"><b>Username </b></td>
+            <td width="80%">{{ user.username }}</td>
+        </tr>
+        <tr>
+            <td width="20%"><b>Email </b></td>
+            <td width="80%">{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td width="20%"><b>Mobile </b></td>
+            <td width="80%">{{ user.mobile }}</td>
+        </tr>
+        <tr>
+            <td width="20%"><b>Role </b></td>
+            <td width="80%">{{ user.role.title }}</td>
+        </tr>
+        <tr>
+            <td width="20%"><b>Created At </b></td>
+            <td width="80%">{{ user.createdAt | date('d/m/Y h:i A') }}</td>
+        </tr>
+    </table>
+{% endblock %}

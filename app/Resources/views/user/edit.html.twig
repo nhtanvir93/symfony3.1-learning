@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Edit New User ({{ form.vars.value.id }}){% endblock %}
+
+{% block body %}
+    <h1 class="display-4">Edit New User ({{ form.vars.value.id }})</h1>
+    <a class="btn btn-primary btn-sm mb-1" href="{{ path('user_list') }}">Back to Users</a>
+
+    {% include 'components/flash.html.twig' with { 'flashMessages' : app.session.flashbag.all } %}
+
+    {% include 'user/form.html.twig' with { 'form' : form } only %}
+{% endblock %}

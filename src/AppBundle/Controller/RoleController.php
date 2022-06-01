@@ -62,7 +62,7 @@ class RoleController extends Controller
             $this->entityManager->flush();
 
             $flashbag = $this->get('session')->getFlashBag();
-            $flashbag->add('success', 'New Role is created successfully !!!');
+            $flashbag->add('success', 'New role is created successfully !!!');
 
             return $this->redirectToRoute('show_role', [
                 'id' => $this->role->getId()
