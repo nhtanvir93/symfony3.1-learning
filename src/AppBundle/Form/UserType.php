@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -11,6 +12,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\Role;
+use Doctrine\ORM\EntityRepository;
 
 class UserType extends AbstractType
 {
@@ -124,12 +127,24 @@ class UserType extends AbstractType
                     ])
                 ]
             ])
+            ->add('role', EntityType::class, [
+                'class' => Role::class,
+                'query_builder' => function (EntityRepository $entityRepository) {
+                    return $entityRepository
+                        ->createQueryBuilder('r')
+                        ->orderBy('r.title', 'ASC');
+                },
+                'choice_label' => 'title',
+                'attr' => [
+                    'class' => 'mb-2',
+                    'placeholder' => 'Role'
+                ],
+            ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success'
                 ]
             ]);
-//            ->add('role');
     }
     
     /**
