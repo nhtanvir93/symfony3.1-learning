@@ -41,7 +41,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/users/create", name="create_users", methods={"GET","POST"})
+     * @Route("/users/create", name="create_user", methods={"GET","POST"})
      */
     public function createAction(Request $request) {
         $this->user->setCreatedAt(

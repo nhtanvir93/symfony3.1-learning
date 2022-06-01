@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -44,6 +45,11 @@ class UserType extends AbstractType
                 'constraints' => [
                     new Assert\NotBlank([
                         'message' => 'Email is required'
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/  ',
+                        'match' => true,
+                        'message' => "Email is invalid"
                     ]),
                     new Assert\Length([
                         'max' => 255,
@@ -116,6 +122,11 @@ class UserType extends AbstractType
                         'max' => 11,
                         'exactMessage' => "Mobile number must have exactly 11 digits"
                     ])
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-success'
                 ]
             ]);
 //            ->add('role');
