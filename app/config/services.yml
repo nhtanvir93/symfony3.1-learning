@@ -40,3 +40,10 @@ services:
 
   AppBundle\Entity\Role:
     class: AppBundle\Entity\Role
+
+  AppBundle\Controller\UserController:
+    class: AppBundle\Controller\UserController
+    arguments: ['@service_container', '@AppBundle\Entity\User']
+
+  AppBundle\Entity\User:
+    class: AppBundle\Entity\User
